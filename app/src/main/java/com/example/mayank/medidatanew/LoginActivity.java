@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 
                 
-                SendUserToRegisterActivity();
+                SendUserToSignUpActivity();
 
              }
         });
@@ -61,22 +61,54 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
+    private void SendUserToSignUpActivity() {
+
+
+
+        Intent sendtoSignUpActivity=new Intent(LoginActivity.this,RegisterActivity.class);
+        startActivity(sendtoSignUpActivity);
+        sendtoSignUpActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        finish();
+
+    }
+
+
+
+
 
     @Override
     protected void onStart() {
         super.onStart();
 
 
+
         FirebaseUser currentUser = mAuth.getCurrentUser();
+
+
+
+
+
 
         if(currentUser!=null)
 
 
+
+
+
         {
+
             SendUserToMainActivity();
 
 
+
+
+
         }
+
+
+
+
 
 
 
@@ -157,8 +189,11 @@ public class LoginActivity extends AppCompatActivity {
 
     private void SendUserToRegisterActivity() {
 
-        Intent sendtoRegister=new Intent(this,RegisterActivity.class);
-        startActivity(sendtoRegister);
+        Intent sendtoMainActivity=new Intent(this,MainActivity.class);
+        startActivity(sendtoMainActivity);
+        sendtoMainActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        finish();
 
 
     }

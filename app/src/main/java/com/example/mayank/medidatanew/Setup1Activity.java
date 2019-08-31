@@ -1,5 +1,7 @@
 package com.example.mayank.medidatanew;
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -8,6 +10,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -149,7 +153,43 @@ public class Setup1Activity extends AppCompatActivity {
 
 
             HashMap usermap = new HashMap();
-            
+            usermap.put("name",Name);
+            usermap.put("Gender",Gender);
+            usermap.put("Address",Address);
+            usermap.put("Occupation",Occupation);
+            usermap.put("Blood Group",BG);
+
+
+            UserRef.updateChildren(usermap).addOnCompleteListener(new OnCompleteListener() {
+                @Override
+                public void onComplete(@NonNull Task task) {
+
+                    if (task.isSuccessful())
+
+
+                    {
+
+
+
+                        SendUserToMainActivity();
+
+
+
+
+                        Toast.makeText(Setup1Activity.this,"your Account is crreated Succesfully",Toast.LENGTH_LONG).show();
+                    }
+
+
+                    else {
+
+                        String message = task.getException().getMessage();
+                        Toast.makeText(Setup1Activity.this,"Error"+message,Toast.LENGTH_LONG).show();
+
+                    }
+
+                }
+            });
+
 
 
         }
@@ -158,6 +198,24 @@ public class Setup1Activity extends AppCompatActivity {
 
 
 
+
+
+
+
+
+
+    }
+
+    private void SendUserToMainActivity() {
+
+
+
+
+        Intent sendtoMainActivity=new Intent(this,MainActivity.class);
+        startActivity(sendtoMainActivity);
+        sendtoMainActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        finish();
 
 
 

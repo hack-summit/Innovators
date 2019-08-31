@@ -150,32 +150,13 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-
-        if(currentUser==null)
-
-
-        {
-            SendUserToLoginActivity();
-
-
-        }
-
-
-
-
-    }
+    
 
     private void SendUserToLoginActivity() {
 
 
 
-            Intent sendtoMainActivity=new Intent(this,MainActivity.class);
+            Intent sendtoMainActivity=new Intent(this,LoginActivity.class);
             startActivity(sendtoMainActivity);
             sendtoMainActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
