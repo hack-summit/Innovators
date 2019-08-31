@@ -30,7 +30,7 @@ public class PicUploadActivity extends AppCompatActivity {
 
     //variables
 
-    private Button btnChoose,btnUpload;
+    private Button btnChoose,btnUpload,back,logout;
     private ImageView imageView;
     private Uri filePath;
 
@@ -54,6 +54,8 @@ public class PicUploadActivity extends AppCompatActivity {
         btnChoose=(Button)findViewById(R.id.btn);
         btnUpload=(Button)findViewById(R.id.upload);
         imageView=(ImageView)findViewById(R.id.img);
+        back=(Button)findViewById(R.id.back);
+        logout=(Button)findViewById(R.id.logout);
 
 
         btnChoose.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +78,52 @@ public class PicUploadActivity extends AppCompatActivity {
                 
             }
         });
+
+
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                sendToLoginActivity();
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                sendToMainActivity();
+            }
+        });
+
+
+
+    }
+
+    private void sendToLoginActivity() {
+
+
+
+
+        Intent sendtoLoginActivty=new Intent(this,LoginActivity.class);
+        startActivity(sendtoLoginActivty);
+        sendtoLoginActivty.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        finish();
+
+
+
+
+    }
+
+    private void sendToMainActivity() {
+
+
+        Intent sendtoMainActivity=new Intent(this,MainActivity.class);
+        startActivity(sendtoMainActivity);
+        sendtoMainActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        finish();
+
 
 
 
@@ -125,6 +173,8 @@ public class PicUploadActivity extends AppCompatActivity {
 
                             double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot.getTotalByteCount());
                             progressDialog.setMessage("Uploaded"+(int)progress+"%");
+
+
 
 
                         }

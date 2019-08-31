@@ -50,6 +50,32 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
+
+
+        AlreadyHave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                sendTologinActivity();
+            }
+        });
+
+
+
+    }
+
+    private void sendTologinActivity() {
+
+
+
+
+        Intent sendtoLogin=new Intent(RegisterActivity.this,LoginOtpActivity.class);
+        startActivity(sendtoLogin);
+        finish();
+
+
+
+
     }
 
     private void CreateAccount() {
@@ -150,7 +176,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 
-    
+
 
     private void SendUserToLoginActivity() {
 

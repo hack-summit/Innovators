@@ -17,7 +17,8 @@ import com.google.firebase.database.ValueEventListener;
 public class MainActivity extends AppCompatActivity {
 
 
-    private Button btn;
+    private Button btn_logout;
+    private Button btnData;
 
     private FirebaseAuth mAuth;
     private DatabaseReference UsersRef;
@@ -31,18 +32,68 @@ public class MainActivity extends AppCompatActivity {
         UsersRef = FirebaseDatabase.getInstance().getReference().child("Users");
 
 
-        btn=findViewById(R.id.Login);
+        btn_logout=findViewById(R.id.logout);
+        btnData=findViewById(R.id.AddFile);
 
 
-        btn.setOnClickListener(new View.OnClickListener() {
+
+        btnData.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openLoginActivity();
+
+
+                sendToDataPage();
+
+            }
+        });
+
+
+
+        btn_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SendUserToRegisterActivity();
             }
         });
 
 
     }
+
+    private void SendUserToRegisterActivity() {
+
+        Intent registerIntent = new Intent(MainActivity.this,RegisterActivity.class);
+        startActivity(registerIntent);
+        finish();
+
+
+
+
+    }
+
+    private void sendToDataPage() {
+
+
+
+        sendToAddDataActivity();
+
+
+
+    }
+
+    private void sendToAddDataActivity() {
+
+
+
+        Intent dataintent = new Intent(MainActivity.this,AddDataActivity.class);
+        startActivity(dataintent);
+        finish();
+
+
+
+
+
+    }
+
 
     @Override
     protected void onStart() {
@@ -82,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
 
                 {
 
-                    SendUserToSetUpActivity();
+                   // SendUserToSetUpActivity();
 
 
                 }
@@ -116,22 +167,12 @@ public class MainActivity extends AppCompatActivity {
     private void SendUserToLoginActivity() {
 
         Intent loginIntend = new Intent(MainActivity.this,LoginActivity.class);
-        loginIntend.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK );
         startActivity(loginIntend);
         finish();
 
 
     }
 
-    public void openLoginActivity()
-
-    {
-
-
-        Intent intent=new Intent(this,LoginActivity.class);
-        startActivity(intent);
-
-    }
 
 
 

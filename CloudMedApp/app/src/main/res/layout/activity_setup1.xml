@@ -32,14 +32,12 @@
             <EditText android:id="@+id/input_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textCapWords"
                 android:hint="Name" />
 
 
             <EditText android:id="@+id/input_age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textCapWords"
                 android:hint="Age" />
 
 
@@ -48,7 +46,6 @@
             <EditText android:id="@+id/input_gender"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
                 android:hint="Gender" />
 
 
@@ -57,21 +54,18 @@
             <EditText android:id="@+id/input_add"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
                 android:hint="Address"/>
 
 
             <EditText android:id="@+id/input_occ"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
                 android:hint="Occupation"/>
 
 
             <EditText android:id="@+id/input_bg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textPassword"
                 android:hint="BloodGroup"/>
 
 

@@ -206,21 +206,14 @@ public class Setup1Activity extends AppCompatActivity {
 
     }
 
+
     private void SendUserToMainActivity() {
-
-
-
 
         Intent sendtoMainActivity=new Intent(this,MainActivity.class);
         startActivity(sendtoMainActivity);
         sendtoMainActivity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
         finish();
-
-
-
-
-
-
     }
+
 }
