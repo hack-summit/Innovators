@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "715107118407",
+    "firebase_url": "https://medidatanew.firebaseio.com",
+    "project_id": "medidatanew",
+    "storage_bucket": "medidatanew.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715107118407:android:d2caa536b6d5fe9e",
+        "android_client_info": {
+          "package_name": "com.example.mayank.medidatanew"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "715107118407-heh782aeq27d8bf58krf9f28kd9ndl1g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mayank.medidatanew",
+            "certificate_hash": "e139defaed8f8a1c5164e7d654354a6e31304a52"
+          }
+        },
+        {
+          "client_id": "715107118407-tb6ojhqft25eeuj61i34jnn1o3ooujcr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFV-Ow1Y_PX2pKu0uBi5hpnJtuaPpck5M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "715107118407-tb6ojhqft25eeuj61i34jnn1o3ooujcr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
