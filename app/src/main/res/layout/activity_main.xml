@@ -12,10 +12,22 @@
         android:id="@+id/Login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/attemptsLeftTV"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="63dp"
-        android:text="ImageUpload" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:text="Logout" />
+
+
+    <Button
+
+        android:id="@+id/AddFile"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:background="@color/colorPrimaryDark"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/Login"
+        android:layout_marginEnd="56dp"
+        android:layout_marginTop="90dp"
+        android:text="Add DATA" />
 
 
 

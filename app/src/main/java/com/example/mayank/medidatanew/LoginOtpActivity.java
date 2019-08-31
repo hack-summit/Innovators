@@ -1,5 +1,6 @@
 package com.example.mayank.medidatanew;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -83,6 +84,12 @@ public class LoginOtpActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+
+                            Intent sendtoSetup=new Intent(LoginOtpActivity.this,Setup1Activity.class);
+                            sendtoSetup.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(sendtoSetup);
+                            finish();
+
 
                             Toast.makeText(getApplicationContext(),"login succesful",Toast.LENGTH_LONG).show();
 
