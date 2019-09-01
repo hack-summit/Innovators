@@ -25,7 +25,7 @@ void setup()
     delay(500);
   }
 
-  Serial.println("fingertest");
+ 
   finger.begin(57600);
 
   if (finger.verifyPassword()) {
@@ -198,15 +198,14 @@ uint8_t getFingerprintEnroll(int id) {
 
 
 
-
+  String Enroll = String("Users") + String(id); // adding these two everytime creates a new child in fire base
   
-    
-      Firebase.setInt("users/enrolled-id", id);  // to update the firebase once enrolled
+  Firebase.pushString("users" ,(Enroll));  // To get multiple entries in the database
 
   if (Firebase.failed())
   {
     Serial.println(Firebase.error());
   }
-  Serial.println("done");
+  Serial.println("send to online database");
     
 }
