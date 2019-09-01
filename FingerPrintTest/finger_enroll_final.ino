@@ -4,13 +4,14 @@
 #include <SoftwareSerial.h>
 
 
-#define FIREBASE_HOST "hacksumitaaruush.firebaseio.com"
-#define FIREBASE_AUTH "78jIAqdMaSziQAa8SpvI1iPq7tTjlfJlJbs7lpRE"
+#define FIREBASE_HOST "medidatanew.firebaseio.com"  // appdata base
+#define FIREBASE_AUTH "kWPFyPsuVScvDQdJEdcA8C9wvKjksuydqxm0J4mW"
 #define WIFI_SSID "don't look here"
 #define WIFI_PASSWORD "asdfghjklp"
 
 uint8_t getFingerprintEnroll(int id);
-SoftwareSerial mySerial(12, 13);
+SoftwareSerial mySerial(12, 13); // 12 - D6 - yellow 
+                                 // 13 - d7 - blue
 
 
 Adafruit_Fingerprint finger = Adafruit_Fingerprint(&mySerial);
@@ -24,6 +25,8 @@ void setup()
     Serial.print(".");
     delay(500);
   }
+  Serial.println("Connected to internet"); 
+   Serial.println(WiFi.localIP());
 
  
   finger.begin(57600);
@@ -35,13 +38,12 @@ void setup()
     while (1);
   }
   Serial.println();
-  Serial.print("connected: ");
-  Serial.println(WiFi.localIP());
+ 
 
   Firebase.begin(FIREBASE_HOST, FIREBASE_AUTH);
 }
 
-void loop()                     // run over and over again
+void loop()                     
 {
 
   Serial.println("Enter ID"); // to identify the person 
@@ -125,7 +127,7 @@ uint8_t getFingerprintEnroll(int id) {
         Serial.println("Image taken");
         break;
       case FINGERPRINT_NOFINGER:
-        Serial.print(".");
+        Serial.println(".");
         break;
       case FINGERPRINT_PACKETRECIEVEERR:
         Serial.println("Communication error");
@@ -179,6 +181,17 @@ uint8_t getFingerprintEnroll(int id) {
     return p;
   }
 
+  
+  String Enroll = String("Users") + String(id); // adding these two everytime creates a new child in fire base
+  
+  Firebase.pushString("fingerprint database" ,(Enroll));  // To get multiple entries in the database
+
+  if (Firebase.failed())
+  {
+    Serial.println(Firebase.error());
+  }
+  Serial.println("sent to online database");
+
   p = finger.storeModel(id);
   if (p == FINGERPRINT_OK) {
     Serial.println("Stored!");
@@ -198,14 +211,5 @@ uint8_t getFingerprintEnroll(int id) {
 
 
 
-  String Enroll = String("Users") + String(id); // adding these two everytime creates a new child in fire base
-  
-  Firebase.pushString("users" ,(Enroll));  // To get multiple entries in the database
-
-  if (Firebase.failed())
-  {
-    Serial.println(Firebase.error());
-  }
-  Serial.println("send to online database");
     
 }
