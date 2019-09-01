@@ -59,6 +59,7 @@ public void sendData()
         Toast.makeText(this,"Data has been send",Toast.LENGTH_SHORT).show();
 
 
+
     }
 else
 
@@ -69,6 +70,9 @@ else
     }
 
 }
+
+
+
 
 
 }

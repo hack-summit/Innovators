@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -24,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText Username,UserEmail,UserPass,ConfirmPass;
     private TextView AlreadyHave;
     private FirebaseAuth mAuth;
+    private Spinner spinner;
 
 
     @Override
@@ -38,13 +41,35 @@ public class RegisterActivity extends AppCompatActivity {
         UserEmail=(EditText)findViewById(R.id.input_email);
         UserPass=(EditText)findViewById(R.id.input_password);
         ConfirmPass=(EditText)findViewById(R.id.input_confirmpassword);
+        spinner =(Spinner)findViewById(R.id.spinner);
+        ArrayAdapter <CharSequence> adapter = ArrayAdapter.createFromResource(this,R.array.usertype,R.layout.support_simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+
 
         AlreadyHave=(TextView)findViewById(R.id.link_login);
 
         SinUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                CreateAccount();
+
+
+                String item =spinner.getSelectedItem().toString();
+
+
+                if (item.equals("patient"))
+
+                {
+                    CreateAccount();
+
+                }
+
+                else if (item.equals("doctor"))
+
+                {
+
+                    CreateAccount1();
+                }
             }
         });
 
@@ -59,6 +84,123 @@ public class RegisterActivity extends AppCompatActivity {
                 sendTologinActivity();
             }
         });
+
+
+
+    }
+
+    private void CreateAccount1() {
+
+
+
+
+        String email = UserEmail.getText().toString();
+        String password = UserPass.getText().toString();
+        String Confermpassword = ConfirmPass.getText().toString();
+
+
+        if (TextUtils.isEmpty(email))
+
+        {
+
+            Toast.makeText(this, "Please write your email ", Toast.LENGTH_SHORT).show();
+
+
+        }
+
+
+
+        else if (TextUtils.isEmpty(password))
+
+
+        {
+
+
+            Toast.makeText(this, "Please write your password ", Toast.LENGTH_SHORT).show();
+
+
+        }
+
+
+
+        else if (TextUtils.isEmpty(Confermpassword))
+
+
+        {
+
+
+            Toast.makeText(this, "Please write your conferm password ", Toast.LENGTH_SHORT).show();
+
+
+        }
+
+
+        else if (!password.equals(Confermpassword))
+
+
+        {
+
+
+            Toast.makeText(this, "Conferm password does not match with Password", Toast.LENGTH_SHORT).show();
+
+
+        }
+
+
+
+        else
+        {
+
+            mAuth.createUserWithEmailAndPassword(email,password)
+                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+
+
+                            if (task.isSuccessful())
+
+
+                            {
+
+                                SendUserToDoctorID();
+
+                                Toast.makeText(RegisterActivity.this, "You are authenticated", Toast.LENGTH_SHORT).show();
+
+
+                            }
+
+
+
+                            else
+                            {
+
+                                String message=task.getException().getMessage();
+                                Toast.makeText(RegisterActivity.this, "Error Occured"+message, Toast.LENGTH_SHORT).show();
+
+
+
+
+                            }
+
+                        }
+                    });
+        }
+
+
+
+
+
+    }
+
+    private void SendUserToDoctorID() {
+
+
+
+        Intent sendtoDoctorID=new Intent(RegisterActivity.this,DoctorIDActivity.class);
+        startActivity(sendtoDoctorID);
+        finish();
+
+
 
 
 

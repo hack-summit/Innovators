@@ -17,7 +17,7 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="56dp"
+            android:paddingTop="40dp"
             android:paddingLeft="24dp"
             android:paddingRight="24dp">
 
@@ -80,7 +80,18 @@
                 android:gravity="center"
                 android:textSize="16dip"/>
 
+            <Spinner
+                android:id="@+id/spinner"
+                android:background="@color/colorAccent"
+                android:layout_width="match_parent"
+                android:layout_height="21dp">
+
+
+            </Spinner>
+
+
         </LinearLayout>
+
     </ScrollView>
 
 </RelativeLayout>

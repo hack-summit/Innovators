@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MediDataNew</string>
+    <string-array name="usertype">
+
+        <item>patient</item>
+        <item>doctor</item>
+
+    </string-array>
 </resources>

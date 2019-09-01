@@ -27,7 +27,9 @@
         <activity android:name=".LoginActivity" />
         <activity android:name=".Setup1Activity" />
         <activity android:name=".AddDataActivity" />
-        <activity android:name=".HistoryActivity"></activity>
+        <activity android:name=".HistoryActivity" />
+        <activity android:name=".DoctorIDActivity" />
+        <activity android:name=".AccessUserActivity"></activity>
     </application>
 
 </manifest>
